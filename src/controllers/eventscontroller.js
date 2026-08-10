@@ -1,3 +1,4 @@
+//to check if there is any missing parameter before inserting in the db and also chekc if the for duplicate event
 import pool from "../db.js"
 
 const getparameters=async(req,res)=>{
