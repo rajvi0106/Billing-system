@@ -22,6 +22,7 @@
 
 // export default updatecounts;
 
+// this new logic uses atomicity of sql to update in db directly
 import pool from "../db.js";
 
 const updatecounts=async(req,res)=>{

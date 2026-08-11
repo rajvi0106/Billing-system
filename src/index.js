@@ -3,11 +3,12 @@ import express from "express";
 import pool from "./db.js";
 import events from "./routes/events.js";
 import counts from "./routes/counts.js";
-
+import invoices from "./routes/invoices.js"
 const app = express();
 app.use(express.json());
 app.use('/usage-events',events)
 app.use('/customer-usage-counts',counts);
+app.use('/invoices',invoices)
 
 app.get("/health", async (req, res) => {
   try {
