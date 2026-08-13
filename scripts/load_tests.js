@@ -8,7 +8,10 @@ async function runloadTest(){
     for(let i=0;i<num_requests;i++){
         promises.push(fetch(URL,{method: "POST"}))
     }
-    await Promise.all(promises);
+    const response=await Promise.all(promises);
+    const successful_responses=response.filter(res=>res.ok).length;
+    const failed_responses=response.length-successful_responses;
+    console.log(`${successful_responses} succeeded and ${failed_responses} failed`);
     console.log("All requests completed.");
 }
 runloadTest();
