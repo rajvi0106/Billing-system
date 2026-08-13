@@ -59,7 +59,7 @@ const addLateEventstoInvoice= async(req,res)=>{
         if(res1.rows.length===0){
             return res.status(400).json({error:"no late events found for this customer in the given period"});
         }
-        const event_count=parseInt(res1.rows.length)
+        const event_count=res1.rows.length;
         const response=await pool.query("select price_per_event from customers where id=$1",[customerID]);
         if(response.rows.length===0) {
             return res.status(404).json({error:"customer not found"});
@@ -88,7 +88,7 @@ const addLateEventstoInvoice= async(req,res)=>{
 
     } catch (error) {
         console.error(error.message);
-        res.status(500).json({error:error.message})
+        res.status(500).json({error:"internal server error"});
     }
 }
 export {addLateEventstoInvoice,createInvoice};
