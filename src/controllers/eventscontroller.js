@@ -12,6 +12,9 @@ const getparameters=async(req,res)=>{
         if(response.rowCount===0){
             return res.status(200).json({status:"duplicate_event",event_id});
         }
+        //to update
+        const result= await pool.query("insert into customer_usage_counts (customer_id,total_count) values($1,1) on conflict (customer_id) do update set total_count = customer_usage_counts.total_count + 1",[customer_id]);
+        
         res.status(201).json({status:"created",event: response.rows[0]});
     } catch (error) {
         console.error(error)
