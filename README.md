@@ -188,7 +188,7 @@ naive version was built and tested specifically *expecting* it to fail.
 
 ---
 
-## Known limitations (explicitly accepted, not oversights)
+## Known limitations
 
 1. **`correction_sequence` assignment is read-then-write, not atomic.**
    `SELECT MAX(correction_sequence)` happens before the transaction, not
